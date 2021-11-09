@@ -1,35 +1,32 @@
-package com.anthony.deltec.gestor.ui.dashboard;
+package com.anthony.deltec.gestor.ui.personas;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.anthony.deltec.gestor.R;
-import com.anthony.deltec.gestor.databinding.FragmentDashboardBinding;
+import com.anthony.deltec.gestor.databinding.FragmentPersonaBinding;
 
-public class DashboardFragment extends Fragment {
+public class PersonaFragment extends Fragment {
 
-    private DashboardViewModel dashboardViewModel;
-    private FragmentDashboardBinding binding;
+    private PersonaViewModel dashboardViewModel;
+    private FragmentPersonaBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         dashboardViewModel =
-                new ViewModelProvider(this).get(DashboardViewModel.class);
+                new ViewModelProvider(this).get(PersonaViewModel.class);
 
-        binding = FragmentDashboardBinding.inflate(inflater, container, false);
+        binding = FragmentPersonaBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         return root;
     }
+
 
     @Override
     public void onDestroyView() {

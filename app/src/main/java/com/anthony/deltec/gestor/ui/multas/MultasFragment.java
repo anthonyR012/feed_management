@@ -1,4 +1,4 @@
-package com.anthony.deltec.gestor.ui.notifications;
+package com.anthony.deltec.gestor.ui.multas;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,20 +12,20 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.anthony.deltec.gestor.R;
-import com.anthony.deltec.gestor.databinding.FragmentNotificationsBinding;
+import com.anthony.deltec.gestor.databinding.FragmentHomeBinding;
+import com.anthony.deltec.gestor.databinding.FragmentMultasBinding;
 
-public class NotificationsFragment extends Fragment {
+public class MultasFragment extends Fragment {
 
-    private NotificationsViewModel notificationsViewModel;
-    private FragmentNotificationsBinding binding;
+    private MultasViewModel notificationsViewModel;
+    private FragmentMultasBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         notificationsViewModel =
-                new ViewModelProvider(this).get(NotificationsViewModel.class);
+                new ViewModelProvider(this).get(MultasViewModel.class);
 
-        binding = FragmentNotificationsBinding.inflate(inflater, container, false);
+        binding = FragmentMultasBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         final TextView textView = binding.textNotifications;

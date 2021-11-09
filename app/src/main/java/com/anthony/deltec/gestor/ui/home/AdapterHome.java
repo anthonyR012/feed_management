@@ -65,7 +65,7 @@ public class AdapterHome extends RecyclerView.Adapter<AdapterHome.ViewHolderDato
     public class ViewHolderDatos extends RecyclerView.ViewHolder {
 
         ImageView imagen;
-        TextView tipoMulta,descripcion,valor;
+        TextView tipoMulta,descripcion,valor,estado,nombre;
 
 
         public ViewHolderDatos(@NonNull View itemView) {
@@ -74,18 +74,19 @@ public class AdapterHome extends RecyclerView.Adapter<AdapterHome.ViewHolderDato
             valor=itemView.findViewById(R.id.valor);
             descripcion=itemView.findViewById(R.id.descripcion);
             imagen=itemView.findViewById(R.id.imgPersona);
-
-
+            estado = itemView.findViewById(R.id.stateMulta);
+            nombre = itemView.findViewById(R.id.nombrePersona);
         }
 
 
         public void asignardatos(final OrderDataImplement modelo, Context context, int position) {
 
 
-            tipoMulta.setText("Tipo de multa: "+modelo.getTipo());
-            valor.setText("Total a pagar: "+modelo.getTotal());
+            tipoMulta.setText("Tipo: "+modelo.getTipo());
+            valor.setText("Total: "+modelo.getTotal());
             descripcion.setText(modelo.getDescription());
-
+            estado.setText(modelo.getState());
+            nombre.setText(modelo.getNamePerson());
 //            Log.i("myurl",modelo.getImg());
 
 //            Picasso.with(context)

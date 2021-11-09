@@ -1,14 +1,14 @@
-package com.anthony.deltec.gestor.ui.notifications;
+package com.anthony.deltec.gestor.ui.multas;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class NotificationsViewModel extends ViewModel {
+public class MultasViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public NotificationsViewModel() {
+    public MultasViewModel() {
         mText = new MutableLiveData<>();
         mText.setValue("This is notifications fragment");
     }

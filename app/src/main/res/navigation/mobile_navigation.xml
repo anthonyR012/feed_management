@@ -13,13 +13,20 @@
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.anthony.deltec.gestor.ui.dashboard.DashboardFragment"
+        android:name="com.anthony.deltec.gestor.ui.personas.PersonaFragment"
         android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_persona" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.anthony.deltec.gestor.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_multas"
+        android:name="com.anthony.deltec.gestor.ui.multas.MultasFragment"
+        android:label="@string/title_multas"
+        tools:layout="@layout/fragment_multas" />
+
+    <fragment
+        android:id="@+id/navigation_vehiculos"
+        android:name="com.anthony.deltec.gestor.ui.vehiculos.VehiculosFragment"
+        android:label="@string/title_vehiculos"
+        tools:layout="@layout/fragment_vehiculos" />
+
 </navigation>

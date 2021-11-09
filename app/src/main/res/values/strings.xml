@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">GestorMultas</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_home">Inicio</string>
+    <string name="title_dashboard">Personas</string>
+    <string name="title_vehiculos">Vehiculos</string>
+    <string name="title_multas">Multas</string>
 </resources>

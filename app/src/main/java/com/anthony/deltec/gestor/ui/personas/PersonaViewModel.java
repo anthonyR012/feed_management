@@ -1,14 +1,13 @@
-package com.anthony.deltec.gestor.ui.dashboard;
+package com.anthony.deltec.gestor.ui.personas;
 
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class DashboardViewModel extends ViewModel {
+public class PersonaViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public DashboardViewModel() {
+    public PersonaViewModel() {
 //        mText = new MutableLiveData<>();
 //        mText.setValue("This is dashboard fragment");
     }

@@ -38,12 +38,16 @@ public class HomeFragment extends Fragment {
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-        getPersonas();
+        getMultasDePersonas();
         return root;
     }
 
-
-    private void getPersonas() {
+    /**
+     * llama view model
+     * trae multas y
+     * Ordenar datos para el adaptador
+     */
+    private void getMultasDePersonas() {
         binding.myRecycle.setLayoutManager(new GridLayoutManager(getContext(), 1));
         homeViewModel.getMultasPersonas().observe(getViewLifecycleOwner(), new Observer<MultasPersonaPojo.MultasPersonasPojoList>() {
             @Override
