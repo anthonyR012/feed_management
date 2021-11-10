@@ -23,10 +23,10 @@ public class HomeViewModel extends ViewModel {
      * @return multas de usuarios
      */
     public LiveData<MultasPersonaPojo.MultasPersonasPojoList> getMultasPersonas() {
-        if (personasMultas == null) {
+
             personasMultas = new MutableLiveData<MultasPersonaPojo.MultasPersonasPojoList>();
             QueryData();
-        }
+
         return personasMultas;
     }
 

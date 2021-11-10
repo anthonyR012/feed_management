@@ -53,10 +53,10 @@ public class MultasViewModel extends ViewModel {
     }
 
     public void SearchMulta(int id){
-        if (multas == null) {
+//        if (multas == null) {
             multas = new MutableLiveData<MultasPojo>();
             SeachData(id);
-        }
+//        }
     }
 
     public void setResultUpdate(ResponseMulta pojo) {

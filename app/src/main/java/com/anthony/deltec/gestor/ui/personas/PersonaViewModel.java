@@ -106,10 +106,10 @@ public class PersonaViewModel extends ViewModel {
      *
      */
     public void searchPerson(String indentify){
-        if (personas == null) {
+//        if (personas == null) {
             personas = new MutableLiveData<PersonasPojo>();
             QueryData(indentify);
-        }
+//        }
     }
 
     private void QueryData(String indentify) {

@@ -6,7 +6,9 @@ import com.anthony.deltec.gestor.dao.pojos.PersonasPojo;
 
 import com.anthony.deltec.gestor.dao.pojos.ResponseMulta;
 import com.anthony.deltec.gestor.dao.pojos.ResponsePersona;
+import com.anthony.deltec.gestor.dao.pojos.ResponseVehiculo;
 import com.anthony.deltec.gestor.dao.pojos.Result;
+import com.anthony.deltec.gestor.dao.pojos.VehiculoPojo;
 
 
 import retrofit2.Call;
@@ -49,9 +51,6 @@ public class Instance {
         @GET("Querys.php?case=multas")
         Call<PersonasPojo.ResponsePojo> getMultas();
 
-        @GET("Querys.php?case=vehiculos")
-        Call<PersonasPojo.ResponsePojo> getVehiculos();
-
         @GET("Querys.php?case=personas")
         Call<PersonasPojo.ResponsePojo> getPersonas();
 
@@ -84,6 +83,18 @@ public class Instance {
 
         @GET("Delete.php?case=multa")
         Call<Result> DeleteMulta(@Query("id_multa") int id_multa);
+// CRUD VEHICULOS
 
+        @GET("Search.php?case=vehiculos")
+        Call<VehiculoPojo.ListVehiculoPojo> searchVehiculo(@Query("matricula") String matricula);
+
+        @POST("Insert.php?case=vehiculo")
+        Call<Result> insertVehiculo(@Body ResponseVehiculo pojo);
+
+        @POST("Update.php?case=vehiculo")
+        Call<Result> updateVehiculo(@Body ResponseVehiculo pojo);
+
+        @GET("Delete.php?case=vehiculo")
+        Call<Result> DeleteVehiculo(@Query("matricula") String matricula);
     }
 }

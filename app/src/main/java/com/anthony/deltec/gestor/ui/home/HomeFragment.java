@@ -56,18 +56,21 @@ public class HomeFragment extends Fragment {
                 List<OrderDataImplement> multas = new ArrayList<>();
                 //ORGANIZAMOS ESAS DATOS POR MEDIO DE UN OBJETO DE TIPO ORDERDATAIMPLEMENT
                 for (int i = 0;i< multasPersonasPojoList.getResponse().size();i++){
-                    for (int e =0;e<multasPersonasPojoList.getResponse().get(i).getMultas().size();e++){
-                        OrderDataImplement implement = new OrderDataImplement
-                                (multasPersonasPojoList.getResponse().get(i).getNombre(),
-                                        multasPersonasPojoList.getResponse().get(i).getImg(),
-                                        multasPersonasPojoList.getResponse().get(i).getMultas().get(e).getTotal(),
-                                        multasPersonasPojoList.getResponse().get(i).getMultas().get(e).getTipo(),
-                                        multasPersonasPojoList.getResponse().get(i).getMultas().get(e).getEstado(),
-                                        multasPersonasPojoList.getResponse().get(i).getMultas().get(e).getDescripcion());
+                    if (multasPersonasPojoList.getResponse().get(i).getMultas()!=null){
+                        for (int e =0;e<multasPersonasPojoList.getResponse().get(i).getMultas().size();e++){
+                            OrderDataImplement implement = new OrderDataImplement
+                                    (multasPersonasPojoList.getResponse().get(i).getNombre(),
+                                            multasPersonasPojoList.getResponse().get(i).getImg(),
+                                            multasPersonasPojoList.getResponse().get(i).getMultas().get(e).getTotal(),
+                                            multasPersonasPojoList.getResponse().get(i).getMultas().get(e).getTipo(),
+                                            multasPersonasPojoList.getResponse().get(i).getMultas().get(e).getEstado(),
+                                            multasPersonasPojoList.getResponse().get(i).getMultas().get(e).getDescripcion());
 
-                        multas.add(implement);
+                            multas.add(implement);
 
+                        }
                     }
+
 
 
                 }
