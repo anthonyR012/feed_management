@@ -74,6 +74,14 @@
 
             </LinearLayout>
             <ImageView
+                android:padding="30px"
+                android:layout_gravity="end|bottom"
+                android:id="@+id/imgLimpiar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/goma_de_borrar"
+                />
+            <ImageView
                 android:padding="50px"
                 android:layout_gravity="end"
                 android:id="@+id/imgBorrar"

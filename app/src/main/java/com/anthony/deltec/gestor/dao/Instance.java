@@ -1,8 +1,10 @@
 package com.anthony.deltec.gestor.dao;
 
 import com.anthony.deltec.gestor.dao.pojos.MultasPersonaPojo;
+import com.anthony.deltec.gestor.dao.pojos.MultasPojo;
 import com.anthony.deltec.gestor.dao.pojos.PersonasPojo;
 
+import com.anthony.deltec.gestor.dao.pojos.ResponseMulta;
 import com.anthony.deltec.gestor.dao.pojos.ResponsePersona;
 import com.anthony.deltec.gestor.dao.pojos.Result;
 
@@ -71,6 +73,17 @@ public class Instance {
         Call<Result> DeletePerson(@Query("email") String email);
 
 //  CRUD MULTAS
+        @GET("Search.php?case=multas")
+        Call<MultasPojo.ListaMultasPojo> searchMulta(@Query("id_multa") int id_multa);
+
+        @POST("Insert.php?case=multa")
+        Call<Result> insertMulta(@Body ResponseMulta pojo);
+
+        @POST("Update.php?case=multa")
+        Call<Result> updateMulta(@Body ResponseMulta pojo);
+
+        @GET("Delete.php?case=multa")
+        Call<Result> DeleteMulta(@Query("id_multa") int id_multa);
 
     }
 }

@@ -96,7 +96,7 @@ public class AdapterHome extends RecyclerView.Adapter<AdapterHome.ViewHolderDato
                         .resize(150,300)
                         .centerCrop()
                         .into(imagen);
-            }else{
+            }else if(modelo.getImg().isEmpty() || modelo.getImg().length()<=5){
                 Picasso.with(context)
                         .load(R.drawable.persona)
                         .resize(150,300)

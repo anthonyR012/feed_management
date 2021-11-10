@@ -68,6 +68,15 @@ public class PersonaFragment extends Fragment {
         binding.btnRegistrar.setOnClickListener(view -> {createPerson();});
         binding.imgBorrar.setOnClickListener(view -> {deletePerson();});
         binding.imgEditar.setOnClickListener(view -> {updatePerson();});
+        binding.imgLimpiar.setOnClickListener(view -> {clearAll();});
+    }
+
+    private void clearAll() {
+        binding.nameFull.setText("");
+        binding.email.setText("");
+        binding.phone.setText("");
+        binding.identify.setText("");
+
     }
 
     /**
@@ -94,6 +103,7 @@ public class PersonaFragment extends Fragment {
                             dashboardViewModel.setResultUpdate(persona);
 
                             Snackbar.make(root, R.string.title_update_complete,BaseTransientBottomBar.LENGTH_LONG).show();
+                        clearAll();
                         }
                     })
                     .setNegativeButton("CANCELAR", new DialogInterface.OnClickListener() {
@@ -131,6 +141,7 @@ public class PersonaFragment extends Fragment {
                             dashboardViewModel.setResultDelete(binding.email.getText().toString());
 
                             Snackbar.make(root, R.string.title_delete_complete,BaseTransientBottomBar.LENGTH_LONG).show();
+                            clearAll();
                         }
                     })
                     .setNegativeButton("CANCELAR", new DialogInterface.OnClickListener() {
@@ -170,7 +181,7 @@ public class PersonaFragment extends Fragment {
             dashboardViewModel.setResultInsert(persona);
 
             Snackbar.make(root, R.string.title_insert_complete,BaseTransientBottomBar.LENGTH_LONG).show();
-
+            clearAll();
 
 
         }else{

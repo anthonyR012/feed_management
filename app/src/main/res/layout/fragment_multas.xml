@@ -65,8 +65,18 @@
                         android:textAlignment="center"
                         android:textColor="#000000"
                         android:textStyle="bold" />
+
                 </LinearLayout>
+
             </LinearLayout>
+            <ImageView
+                android:padding="30px"
+                android:layout_gravity="end|bottom"
+                android:id="@+id/imgLimpiarMulta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/goma_de_borrar"
+                />
             <ImageView
                 android:padding="50px"
                 android:layout_gravity="end"
@@ -160,7 +170,7 @@
                     android:ems="10"
                     android:hint="Descripción"
                     android:inputType="textEmailAddress"
-                    android:padding="15dp" />
+                    android:padding="18dp" />
             </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -178,7 +188,7 @@
                     android:id="@+id/totalMulta"
                     android:hint="Total"
                     android:inputType="textEmailAddress"
-                    android:padding="15dp" />
+                    android:padding="18dp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -194,14 +204,14 @@
                     android:id="@+id/descuentoMulta"
                     android:hint="Descuento"
                     android:inputType="textEmailAddress"
-                    android:padding="15dp" />
+                    android:padding="18dp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
                 android:id="@+id/btn_registrar_multa"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
+
                 android:backgroundTint="#D5D0D0"
                 android:layout_gravity="center"
                 android:text="Registrar"
