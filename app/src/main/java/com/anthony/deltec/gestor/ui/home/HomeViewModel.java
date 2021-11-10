@@ -62,6 +62,7 @@ public class HomeViewModel extends ViewModel {
                 @Override
                 public void onResponse(Call<MultasPersonaPojo.MultasPersonasPojoList> call, Response<MultasPersonaPojo.MultasPersonasPojoList> response) {
                     if (response.isSuccessful()){
+
                         personasMultas.setValue(response.body());
 
                     }else{

@@ -27,8 +27,10 @@ public class AdapterHome extends RecyclerView.Adapter<AdapterHome.ViewHolderDato
 
 
 
-    public AdapterHome(List<OrderDataImplement> multas) {
+    public AdapterHome(List<OrderDataImplement> multas,Context context) {
+
         this.multas=multas;
+        this.context = context;
     }
 
     @NonNull
@@ -87,13 +89,21 @@ public class AdapterHome extends RecyclerView.Adapter<AdapterHome.ViewHolderDato
             descripcion.setText(modelo.getDescription());
             estado.setText(modelo.getState());
             nombre.setText(modelo.getNamePerson());
-//            Log.i("myurl",modelo.getImg());
 
-//            Picasso.with(context)
-//                    .load(modelo.getImg())
-//                    .resize(150,300)
-//                    .centerCrop()
-//                    .into(imagen);
+            if (modelo.getImg().length()>5){
+                Picasso.with(context)
+                        .load(modelo.getImg())
+                        .resize(150,300)
+                        .centerCrop()
+                        .into(imagen);
+            }else{
+                Picasso.with(context)
+                        .load(R.drawable.persona)
+                        .resize(150,300)
+                        .centerCrop()
+                        .into(imagen);
+            }
+
 //
 //            Log.i("entr","");
         }

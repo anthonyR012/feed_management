@@ -27,6 +27,15 @@ public class PersonasPojo {
     @Expose
     private String img;
 
+    public PersonasPojo(String id, String nombre, String identificacion, String correo, String telefono, String img) {
+        this.id = id;
+        this.nombre = nombre;
+        this.identificacion = identificacion;
+        this.correo = correo;
+        this.telefono = telefono;
+        this.img = img;
+    }
+
     public String getId() {
         return id;
     }

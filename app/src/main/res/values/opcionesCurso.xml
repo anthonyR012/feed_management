@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="combo_curso">
+        <item >Curso</item>
+        <item >desaprobado</item>
+        <item >aprobado</item>
+
+    </string-array>
+</resources>

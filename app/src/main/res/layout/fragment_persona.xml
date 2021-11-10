@@ -44,7 +44,7 @@
 
 
                 <ImageView
-                    android:id="@+id/imageView2"
+                    android:id="@+id/imgPerfil"
                     android:layout_width="90dp"
                     android:layout_height="90dp"
                     app:srcCompat="@drawable/persona" />
@@ -98,11 +98,11 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:endIconMode="clear_text">
+                android:layout_height="wrap_content">
 
-                <com.google.android.material.textfield.TextInputEditText
+                <EditText
                     android:layout_width="match_parent"
+                    android:id="@+id/identify"
                     android:layout_height="wrap_content"
                     android:background="@drawable/border_recto"
                     android:drawableRight="@drawable/buscar"
@@ -120,6 +120,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/border"
                     android:hint="Nombre completo"
+                    android:id="@+id/nameFull"
                     android:inputType="text" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -133,6 +134,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:id="@+id/phone"
                     android:background="@drawable/border_recto"
                     android:hint="Teléfono"
                     android:inputType="phone" />
@@ -148,9 +150,9 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/border_bottom"
                     android:ems="10"
+                    android:id="@+id/email"
                     android:hint="Correo electrónico"
-                    android:inputType="textEmailAddress"
-                    android:padding="15dp" />
+                    android:inputType="textEmailAddress"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button

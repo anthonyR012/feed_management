@@ -7,10 +7,12 @@
         <entry key="..\:/Anthony/Practicas/GestorMultas/app/src/main/res/drawable/border_bottom.xml" value="0.1398148148148148" />
         <entry key="..\:/Anthony/Practicas/GestorMultas/app/src/main/res/drawable/border_recto.xml" value="0.1398148148148148" />
         <entry key="..\:/Anthony/Practicas/GestorMultas/app/src/main/res/drawable/boton.xml" value="0.1398148148148148" />
+        <entry key="..\:/Anthony/Practicas/GestorMultas/app/src/main/res/drawable/opciones.xml" value="0.1361111111111111" />
         <entry key="..\:/Anthony/Practicas/GestorMultas/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/Anthony/Practicas/GestorMultas/app/src/main/res/layout/activity_splash_init.xml" value="0.18645833333333334" />
         <entry key="..\:/Anthony/Practicas/GestorMultas/app/src/main/res/layout/fragment_dashboard.xml" value="0.151268115942029" />
         <entry key="..\:/Anthony/Practicas/GestorMultas/app/src/main/res/layout/fragment_home.xml" value="0.18645833333333334" />
+        <entry key="..\:/Anthony/Practicas/GestorMultas/app/src/main/res/layout/fragment_multas.xml" value="0.22" />
         <entry key="..\:/Anthony/Practicas/GestorMultas/app/src/main/res/layout/fragment_persona.xml" value="0.22" />
         <entry key="..\:/Anthony/Practicas/GestorMultas/app/src/main/res/layout/fragment_vehiculos.xml" value="0.1" />
         <entry key="..\:/Anthony/Practicas/GestorMultas/app/src/main/res/layout/item_multas_personas.xml" value="0.33" />

@@ -73,7 +73,7 @@ public class HomeFragment extends Fragment {
                 }
                 Log.i("multa",multas.get(0).getNamePerson());
 //                PASAMOS LISTA POR PARAMETRO AL ADAPTADOR
-                AdapterHome adapter = new AdapterHome(multas);
+                AdapterHome adapter = new AdapterHome(multas,getContext());
                 binding.myRecycle.setAdapter(adapter);
 //                Log.i("Response",multasPersonasPojoList.getResponse().get(0).getNombre());
             }

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="combo_estado" >
+        <item >Estado</item>
+        <item >debe</item>
+        <item >pagado</item>
+
+
+
+    </string-array>
+</resources>
