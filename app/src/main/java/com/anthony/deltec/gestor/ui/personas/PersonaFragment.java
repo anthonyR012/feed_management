@@ -89,6 +89,11 @@ public class PersonaFragment extends Fragment {
         return root;
     }
 
+    /**
+     * Solicita permiso de galeria, ejecuta
+     * registerForActivityResult para salvar la img
+     * @param imagenUp
+     */
     private void loaderImg(ActivityResultLauncher<Intent> imagenUp) {
         //CARGA IMAGEN Y LA SETEA
 
@@ -134,12 +139,15 @@ public class PersonaFragment extends Fragment {
         binding.imgLimpiar.setOnClickListener(view -> {clearAll();});
     }
 
+    /**
+     * Limpiar input de entrada
+     */
     private void clearAll() {
         binding.nameFull.setText("");
         binding.email.setText("");
         binding.phone.setText("");
         binding.identify.setText("");
-        binding.imgPerfil.setImageResource(R.drawable.persona);
+        binding.imgPerfil.setImageResource(R.drawable.perfil);
     }
 
     /**
@@ -150,6 +158,7 @@ public class PersonaFragment extends Fragment {
                 !binding.email.getText().toString().isEmpty() &&
                 !binding.phone.getText().toString().isEmpty() &&
                 !binding.nameFull.getText().toString().isEmpty();
+
         if (verified){
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
             builder.setMessage("¿Esta seguro de editar el registro?")
@@ -233,21 +242,26 @@ public class PersonaFragment extends Fragment {
                 !binding.phone.getText().toString().isEmpty() &&
                 !binding.nameFull.getText().toString().isEmpty();
         if (verified){
+            if (photoBitmap!=null) {
 
-            String img = convertorImage(photoBitmap);
 
-            ResponsePersona persona = new ResponsePersona(
-                    binding.nameFull.getText().toString(),
-                    binding.identify.getText().toString(),
-                    binding.email.getText().toString(),
-                    binding.phone.getText().toString(),
-                    img);
+                String img = convertorImage(photoBitmap);
 
-            dashboardViewModel.setResultInsert(persona);
+                ResponsePersona persona = new ResponsePersona(
+                        binding.nameFull.getText().toString(),
+                        binding.identify.getText().toString(),
+                        binding.email.getText().toString(),
+                        binding.phone.getText().toString(),
+                        img);
 
-            Snackbar.make(root, R.string.title_insert_complete,BaseTransientBottomBar.LENGTH_LONG).show();
-            clearAll();
+                dashboardViewModel.setResultInsert(persona);
 
+                Snackbar.make(root, R.string.title_insert_complete, BaseTransientBottomBar.LENGTH_LONG).show();
+                clearAll();
+            }else{
+                Snackbar.make(root, "Estas editando",BaseTransientBottomBar.LENGTH_LONG).show();
+
+            }
 
         }else{
             Snackbar.make(root, R.string.title_complete_input,BaseTransientBottomBar.LENGTH_LONG).show();

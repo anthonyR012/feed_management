@@ -25,8 +25,11 @@ public class AdapterHome extends RecyclerView.Adapter<AdapterHome.ViewHolderDato
     private Context context;
 
 
-
-
+    /**
+     * Constructor recibe datos Onchange de petición HTTP
+     * @param multas json de la api rest
+     * @param context
+     */
     public AdapterHome(List<OrderDataImplement> multas,Context context) {
 
         this.multas=multas;
@@ -47,7 +50,10 @@ public class AdapterHome extends RecyclerView.Adapter<AdapterHome.ViewHolderDato
 
     }
 
-
+    /**
+     * Numero de vistas creadas
+     * @return tamaño lista
+     */
     @Override
     public int getItemCount() {
         return multas.size();
@@ -80,7 +86,13 @@ public class AdapterHome extends RecyclerView.Adapter<AdapterHome.ViewHolderDato
             nombre = itemView.findViewById(R.id.nombrePersona);
         }
 
-
+        /**
+         * Genera vista para los datos
+         * y setea
+         * @param modelo
+         * @param context
+         * @param position
+         */
         public void asignardatos(final OrderDataImplement modelo, Context context, int position) {
 
 
@@ -90,19 +102,13 @@ public class AdapterHome extends RecyclerView.Adapter<AdapterHome.ViewHolderDato
             estado.setText(modelo.getState());
             nombre.setText(modelo.getNamePerson());
 
-            if (modelo.getImg().length()>5){
+
                 Picasso.with(context)
                         .load(modelo.getImg())
                         .resize(150,300)
                         .centerCrop()
                         .into(imagen);
-            }else if(modelo.getImg().isEmpty() || modelo.getImg().length()<=5){
-                Picasso.with(context)
-                        .load(R.drawable.persona)
-                        .resize(150,300)
-                        .centerCrop()
-                        .into(imagen);
-            }
+
 
 //
 //            Log.i("entr","");

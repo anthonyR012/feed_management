@@ -241,6 +241,9 @@ public class MultasFragment extends Fragment {
         setComboBoxes();
     }
 
+    /**
+     * Busca multa peticion HTTP
+     */
     private void getMulta() {
         multasViewModel.SearchMulta(Integer.parseInt(binding.idMulta.getText().toString()));
        multasViewModel.getMultas().observe(getViewLifecycleOwner(), new Observer<MultasPojo>() {
@@ -276,6 +279,10 @@ public class MultasFragment extends Fragment {
 
     }
 
+    /**
+     * Rellena combo box
+     *
+     */
     private void setComboBoxes() {
 
 

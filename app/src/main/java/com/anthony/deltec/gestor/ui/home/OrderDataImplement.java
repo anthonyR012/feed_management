@@ -8,6 +8,14 @@ public class OrderDataImplement {
     private String state;
     private String description;
 
+    /**
+     * @param namePerson
+     * @param img
+     * @param total
+     * @param tipo
+     * @param state
+     * @param description
+     */
     public OrderDataImplement(String namePerson, String img, String total, String tipo, String state, String description) {
         this.namePerson = namePerson;
         this.img = img;

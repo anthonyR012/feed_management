@@ -87,6 +87,10 @@ public class VehiculosFragment extends Fragment {
 
     }
 
+    /**
+     * Actualiza información de vehiculo
+     *
+     */
     private void updateVehiculo() {
         boolean verified = !binding.categoriaVehi.getText().toString().isEmpty() &&
                 !binding.marcaVehi.getText().toString().isEmpty() &&
@@ -126,6 +130,10 @@ public class VehiculosFragment extends Fragment {
         }
     }
 
+    /**
+     * Elimina vehiculo
+     * Con matriculo peticion get (viewmodel)
+     */
     private void deleteVehiculo() {
         boolean verified = !binding.categoriaVehi.getText().toString().isEmpty() &&
                 !binding.marcaVehi.getText().toString().isEmpty() &&
@@ -160,6 +168,11 @@ public class VehiculosFragment extends Fragment {
         }
     }
 
+    /**
+     * Crea vehiculo
+     * envia objeto para serializar a json
+     * y petición por body
+     */
     private void createVehiculo() {
 
         boolean verified =
@@ -200,7 +213,10 @@ public class VehiculosFragment extends Fragment {
     }
 
 
-
+    /**
+     * Busca vehiculo por
+     * condicion matricula
+     */
     private void getVehiculo() {
 
         vehiculosViewModel.SearchVehiculo(binding.idMatricula.getText().toString());
@@ -223,7 +239,10 @@ public class VehiculosFragment extends Fragment {
 
     }
 
-
+    /**
+     * Llena combo box
+     *
+     */
     private void setComboBoxes() {
 
 

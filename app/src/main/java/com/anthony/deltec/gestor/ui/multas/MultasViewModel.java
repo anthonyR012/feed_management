@@ -34,6 +34,7 @@ public class MultasViewModel extends ViewModel {
         return multas;
     }
 
+
     public void setResultDelete(int id_multa) {
         Instance.MultasApi api;
         api = Instance.getInstance();

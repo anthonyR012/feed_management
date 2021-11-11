@@ -22,6 +22,10 @@ public class Splash_Init extends AppCompatActivity {
         startAnimation();
     }
 
+    /**
+     * Crea animación inicial y llama actividad
+     * principal
+     */
     private void startAnimation() {
         animation.setAnimation(R.raw.loading);
         animation.playAnimation();
