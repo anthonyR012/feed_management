@@ -41,6 +41,8 @@ public class MultasFragment extends Fragment {
     private PersonasPojo.ResponsePojo responsePersona;
     private  ArrayAdapter<CharSequence> adapterCurso,adapterEstado,adapterTipo;
     View root;
+    private String descuento;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         multasViewModel =
@@ -97,19 +99,29 @@ public class MultasFragment extends Fragment {
         !binding.idSpinnerPersonas.getSelectedItem().toString().equals("Seleccione");
 
         if (verified){
+
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
             builder.setMessage("¿Esta seguro de editar el registro?")
                     .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
+
+                            Log.i("descuento",descuento+" base = "+binding.descuentoMulta.getText().toString());
+                            int total = Integer.parseInt(binding.totalMulta.getText().toString());
+
+                            if (!descuento.equals(binding.descuentoMulta.getText().toString())){
+                                total = calcDescoint(binding.descuentoMulta.getText().toString(),binding.totalMulta.getText().toString());
+
+                            }
+
                             ResponseMulta multa = new ResponseMulta(
                                     binding.idSpinnerEstado.getSelectedItem().toString(),
                                     Integer.parseInt(binding.idSpinnerTipos.getSelectedItem().toString()),
                                     binding.idSpinnerCursos.getSelectedItem().toString(),
                                     binding.descripcionMulta.getText().toString(),
-                                    Integer.parseInt(binding.descuentoMulta.getText().toString()),
-                                    Integer.parseInt(binding.totalMulta.getText().toString()),0);
-                        multa.setId_multa(Integer.parseInt(binding.idMulta.getText().toString()));
+                                    Integer.parseInt(binding.descuentoMulta.getText().toString().replace(" ","")),
+                                    total,0);
+                        multa.setId_multa(Integer.parseInt(binding.idMulta.getText().toString().replace(" ","")));
                         Log.i("id", String.valueOf(binding.idMulta.getText().toString()));
                         multasViewModel.setResultUpdate(multa);
 
@@ -188,8 +200,8 @@ public class MultasFragment extends Fragment {
                     !binding.idSpinnerCursos.getSelectedItem().toString().equals("Tipo Multas")) {
 
                 int total = !binding.descuentoMulta.getText().equals("0")?
-                        calcDescoint(binding.descuentoMulta.getText().toString(),binding.totalMulta.getText().toString()):
-                        Integer.valueOf(binding.descuentoMulta.getText().toString());
+                        calcDescoint(binding.descuentoMulta.getText().toString().replace(" ",""),binding.totalMulta.getText().toString().replace(" ","")):
+                        Integer.valueOf(binding.descuentoMulta.getText().toString().replace(" ",""));
 
                 ResponseMulta multa = new ResponseMulta(
                         binding.idSpinnerEstado.getSelectedItem().toString(),
@@ -239,16 +251,21 @@ public class MultasFragment extends Fragment {
         binding.totalMulta.setText("");
         binding.idMulta.setText("");
         setComboBoxes();
+
     }
 
     /**
      * Busca multa peticion HTTP
      */
     private void getMulta() {
-        multasViewModel.SearchMulta(Integer.parseInt(binding.idMulta.getText().toString()));
+
+
+        multasViewModel.SearchMulta(Integer.parseInt(binding.idMulta.getText().toString().replace(" ","")));
        multasViewModel.getMultas().observe(getViewLifecycleOwner(), new Observer<MultasPojo>() {
            @Override
            public void onChanged(MultasPojo multasPojo) {
+               descuento = multasPojo.getDescuento();
+
                ArrayAdapter<CharSequence> adapterpersona = new ArrayAdapter
                        (getActivity(), android.R.layout.simple_spinner_item, Collections.singletonList(multasPojo.getResponsable()));
 

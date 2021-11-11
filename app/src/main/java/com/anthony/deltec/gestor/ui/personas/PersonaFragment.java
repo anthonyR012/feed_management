@@ -170,8 +170,8 @@ public class PersonaFragment extends Fragment {
                             ResponsePersona persona = new ResponsePersona(
                                     binding.nameFull.getText().toString(),
                                     binding.identify.getText().toString(),
-                                    binding.email.getText().toString(),
-                                    binding.phone.getText().toString(),
+                                    binding.email.getText().toString().replace(" ",""),
+                                    binding.phone.getText().toString().replace(" ",""),
                                     "");
 
                             dashboardViewModel.setResultUpdate(persona);
