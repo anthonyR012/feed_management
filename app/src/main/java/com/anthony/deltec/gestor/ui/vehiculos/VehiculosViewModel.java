@@ -36,7 +36,7 @@ public class VehiculosViewModel extends ViewModel {
         Instance.MultasApi api;
 
         api = Instance.getInstance();
-        Call<PersonasPojo.ResponsePojo> call = api.getPersonas();
+        Call<PersonasPojo.ResponsePojo> call = api.getPersonasWithoutV();
         VehiculosViewModel.ThreadImplement hilo = new VehiculosViewModel.ThreadImplement(call);
         hilo.start();
     }
@@ -81,10 +81,10 @@ public class VehiculosViewModel extends ViewModel {
     }
 
     public void SearchVehiculo(String matricula){
-//        if (vehiculo == null) {
+
             vehiculo = new MutableLiveData<VehiculoPojo>();
             SeachData(matricula);
-//        }
+
     }
 
     public MutableLiveData<VehiculoPojo> getVehiculo() {

@@ -3,11 +3,14 @@ package com.anthony.deltec.gestor.ui.multas;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.text.Editable;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -50,6 +53,9 @@ public class MultasFragment extends Fragment {
         return root;
     }
 
+
+
+
     private void evetsClick() {
         binding.idMulta.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -70,18 +76,26 @@ public class MultasFragment extends Fragment {
             }
         });
 
+
+
         binding.btnRegistrarMulta.setOnClickListener(view -> {createMulta();});
         binding.imgBorrarMulta.setOnClickListener(view -> {deleteMulta();});
         binding.imgEditarMulta.setOnClickListener(view -> {updateMulta();});
         binding.imgLimpiarMulta.setOnClickListener(view -> {clearAll();});
     }
 
+    /**
+     * CRUD METODOS
+     * ACTUALIZA MULTA
+     */
     private void updateMulta() {
 
         boolean verified = !binding.idMulta.getText().toString().isEmpty() &&
                 !binding.descripcionMulta.getText().toString().isEmpty() &&
                 !binding.descuentoMulta.getText().toString().isEmpty() &&
-                !binding.totalMulta.getText().toString().isEmpty();
+                !binding.totalMulta.getText().toString().isEmpty() &&
+        !binding.idSpinnerPersonas.getSelectedItem().toString().equals("Seleccione");
+
         if (verified){
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
             builder.setMessage("¿Esta seguro de editar el registro?")
@@ -118,7 +132,10 @@ public class MultasFragment extends Fragment {
         }
 
     }
-
+    /**
+     * CRUD METODOS
+     * BORRA MULTA POR MATRICULA
+     */
     private void deleteMulta() {
         boolean verified = !binding.idMulta.getText().toString().isEmpty() &&
                 !binding.descuentoMulta.getText().toString().isEmpty() &&
@@ -152,42 +169,69 @@ public class MultasFragment extends Fragment {
             Snackbar.make(root, R.string.title_complete_input,BaseTransientBottomBar.LENGTH_LONG).show();
         }
     }
-
+    /**
+     * CRUD METODOS
+     * CREA MULTA
+     */
     private void createMulta() {
         boolean verified =
                 !binding.descripcionMulta.getText().toString().isEmpty() &&
                 !binding.descuentoMulta.getText().toString().isEmpty() &&
-                !binding.totalMulta.getText().toString().isEmpty();
+                !binding.totalMulta.getText().toString().isEmpty() &&
+                !binding.idSpinnerPersonas.getSelectedItem().toString().equals("Seleccione");
 
 
-        if (verified){
+        if (verified) {
 
+            if (!binding.idSpinnerEstado.getSelectedItem().toString().equals("Estado") &&
+                    !binding.idSpinnerCursos.getSelectedItem().toString().equals("Curso") &&
+                    !binding.idSpinnerCursos.getSelectedItem().toString().equals("Tipo Multas")) {
 
-            ResponseMulta multa = new ResponseMulta(
-                    binding.idSpinnerEstado.getSelectedItem().toString(),
-                    Integer.parseInt(binding.idSpinnerTipos.getSelectedItem().toString()),
-                    binding.idSpinnerCursos.getSelectedItem().toString(),
-                    binding.descripcionMulta.getText().toString(),
-                    Integer.parseInt(binding.descuentoMulta.getText().toString()),
-                    Integer.parseInt(binding.totalMulta.getText().toString()),0);
+                int total = !binding.descuentoMulta.getText().equals("0")?
+                        calcDescoint(binding.descuentoMulta.getText().toString(),binding.totalMulta.getText().toString()):
+                        Integer.valueOf(binding.descuentoMulta.getText().toString());
 
-            for (int i = 0;i < responsePersona.getResponse().size(); i++){
-                if (responsePersona.getResponse().get(i).getNombre().equals(binding.idSpinnerPersonas.getSelectedItem().toString())){
-                    Log.i("reponse",responsePersona.getResponse().get(i).getId());
-                    multa.setIdPersona(Integer.parseInt(responsePersona.getResponse().get(i).getId()));
+                ResponseMulta multa = new ResponseMulta(
+                        binding.idSpinnerEstado.getSelectedItem().toString(),
+                        Integer.parseInt(binding.idSpinnerTipos.getSelectedItem().toString()),
+                        binding.idSpinnerCursos.getSelectedItem().toString(),
+                        binding.descripcionMulta.getText().toString(),
+                        Integer.parseInt(binding.descuentoMulta.getText().toString()),
+                        total, 0);
+
+                for (int i = 0; i < responsePersona.getResponse().size(); i++) {
+                    if (responsePersona.getResponse().get(i).getNombre().equals(binding.idSpinnerPersonas.getSelectedItem().toString())) {
+                        Log.i("reponse", responsePersona.getResponse().get(i).getId());
+                        multa.setIdPersona(Integer.parseInt(responsePersona.getResponse().get(i).getId()));
+                    }
                 }
+
+                multasViewModel.setResultInsert(multa);
+
+                Snackbar.make(root, R.string.title_insert_complete, BaseTransientBottomBar.LENGTH_LONG).show();
+                clearAll();
+
+
+            } else {
+                Snackbar.make(root, R.string.title_combo_fail, BaseTransientBottomBar.LENGTH_LONG).show();
             }
-
-         multasViewModel.setResultInsert(multa);
-
-            Snackbar.make(root, R.string.title_insert_complete, BaseTransientBottomBar.LENGTH_LONG).show();
-            clearAll();
-
-
         }else{
-            Snackbar.make(root, R.string.title_complete_input,BaseTransientBottomBar.LENGTH_LONG).show();
+            Snackbar.make(root, R.string.title_complete_input, BaseTransientBottomBar.LENGTH_LONG).show();
         }
     }
+
+    /**
+     * Aplicar decuento
+     * @param descuento
+     * @param valor
+     * @return
+     */
+    private int calcDescoint(String descuento, String valor) {
+
+        return (int) (Double.parseDouble(valor) - ((Double.parseDouble(descuento) / 100) * Double.parseDouble(valor) ));
+
+    }
+
 
     private void clearAll() {
         binding.descuentoMulta.setText("");

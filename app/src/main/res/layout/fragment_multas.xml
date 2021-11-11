@@ -187,7 +187,7 @@
                     android:ems="10"
                     android:id="@+id/totalMulta"
                     android:hint="Total"
-                    android:inputType="textEmailAddress"
+                    android:inputType="number"
                     android:padding="18dp" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -203,7 +203,7 @@
                     android:ems="10"
                     android:id="@+id/descuentoMulta"
                     android:hint="Descuento"
-                    android:inputType="textEmailAddress"
+                    android:inputType="number"
                     android:padding="18dp" />
             </com.google.android.material.textfield.TextInputLayout>
 

@@ -8,5 +8,6 @@
     <string name="title_insert_complete">Registro guardado</string>
     <string name="title_update_complete">Registro actualizado</string>
     <string name="title_delete_complete">Registro eliminado</string>
+    <string name="title_combo_fail">Seleccióne valor de las listas</string>
 
 </resources>

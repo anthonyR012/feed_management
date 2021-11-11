@@ -165,10 +165,13 @@ public class VehiculosFragment extends Fragment {
         boolean verified =
                 !binding.categoriaVehi.getText().toString().isEmpty() &&
                         !binding.marcaVehi.getText().toString().isEmpty() &&
-                        !binding.idMatricula.getText().toString().isEmpty();
+                        !binding.idMatricula.getText().toString().isEmpty() &&
+                !binding.idSpinnerAnio.getSelectedItem().toString().equals("Modelo") &&
+                !binding.idSpinnerPertenece.getSelectedItem().toString().equals("Seleccione");
 
 
         if (verified){
+
 
 
             ResponseVehiculo vehiculo = new ResponseVehiculo(
@@ -195,6 +198,8 @@ public class VehiculosFragment extends Fragment {
         }
 
     }
+
+
 
     private void getVehiculo() {
 

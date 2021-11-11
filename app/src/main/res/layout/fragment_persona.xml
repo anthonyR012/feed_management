@@ -42,34 +42,42 @@
                 android:orientation="vertical">
 
 
+                <ImageView
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/imgPerfil"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_marginTop="40dp"
+                    app:srcCompat="@drawable/usuario" />
 
                 <ImageView
-                    android:id="@+id/imgPerfil"
-                    android:layout_width="90dp"
-                    android:layout_height="90dp"
-                    app:srcCompat="@drawable/persona" />
+                    android:id="@+id/imgClick"
+                    android:translationX="40dp"
+                    android:translationY="-10dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    app:srcCompat="@drawable/puntero" />
+<!--                <LinearLayout-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="20dp"-->
+<!--                    android:background="@drawable/border"-->
+<!--                    android:backgroundTint="#ECECEC"-->
+<!--                    android:orientation="vertical"-->
+<!--                    android:paddingLeft="20dp"-->
+<!--                    android:paddingTop="2dp"-->
+<!--                    android:paddingRight="20dp"-->
+<!--                    android:paddingBottom="2dp">-->
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:background="@drawable/border"
-                    android:backgroundTint="#ECECEC"
-                    android:orientation="vertical"
-                    android:paddingLeft="20dp"
-                    android:paddingTop="2dp"
-                    android:paddingRight="20dp"
-                    android:paddingBottom="2dp">
-
-                    <TextView
-                        android:id="@+id/textView3"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Personas"
-                        android:textAlignment="center"
-                        android:textColor="#000000"
-                        android:textStyle="bold" />
-                </LinearLayout>
+<!--                    <TextView-->
+<!--                        android:id="@+id/textView3"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Personas"-->
+<!--                        android:textAlignment="center"-->
+<!--                        android:textColor="#000000"-->
+<!--                        android:textStyle="bold" />-->
+<!--                </LinearLayout>-->
 
 
             </LinearLayout>

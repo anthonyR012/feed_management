@@ -54,6 +54,9 @@ public class Instance {
         @GET("Querys.php?case=personas")
         Call<PersonasPojo.ResponsePojo> getPersonas();
 
+        @GET("Querys.php?case=personasinv")
+        Call<PersonasPojo.ResponsePojo> getPersonasWithoutV();
+
         @GET("Querys.php?case=multasPersonas")
         Call<MultasPersonaPojo.MultasPersonasPojoList> getMultasPersonas();
 

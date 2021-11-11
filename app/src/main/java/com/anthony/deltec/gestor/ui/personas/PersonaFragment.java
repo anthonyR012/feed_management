@@ -1,8 +1,18 @@
 package com.anthony.deltec.gestor.ui.personas;
 
+import android.Manifest;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -10,7 +20,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -23,12 +39,19 @@ import com.anthony.deltec.gestor.dao.pojos.ResponsePersona;
 import com.anthony.deltec.gestor.databinding.FragmentPersonaBinding;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
+import com.squareup.picasso.Picasso;
+
+import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 
 public class PersonaFragment extends Fragment {
-
+    private static final int PICK_FROM_GALLERY = 1;
     private PersonaViewModel dashboardViewModel;
     private FragmentPersonaBinding binding;
     View root;
+    private Bitmap photoBitmap;
+    private ActivityResultLauncher<Intent> imagenUp;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -37,10 +60,50 @@ public class PersonaFragment extends Fragment {
 
         binding = FragmentPersonaBinding.inflate(inflater, container, false);
         root = binding.getRoot();
+
+        imagenUp = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                new ActivityResultCallback<ActivityResult>() {
+                    @RequiresApi(api = Build.VERSION_CODES.O)
+                    @Override
+                    public void onActivityResult(ActivityResult result) {
+                        if (result.getResultCode() == Activity.RESULT_OK) {
+                            Intent data = result.getData();
+                            Uri imageUri = data.getData();
+                            final InputStream imageStream;
+                            try {
+                                imageStream = getActivity().getContentResolver().openInputStream(imageUri);
+                                 photoBitmap = BitmapFactory.decodeStream(imageStream);
+
+                            } catch (FileNotFoundException e) {
+                                e.printStackTrace();
+                            }
+
+                            binding.imgPerfil.setImageURI(imageUri);
+
+                        }
+                    }
+                });
+
         getEvents();
         return root;
     }
 
+    private void loaderImg(ActivityResultLauncher<Intent> imagenUp) {
+        //CARGA IMAGEN Y LA SETEA
+
+        if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE}, PICK_FROM_GALLERY);
+
+        } else {
+            Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+            gallery.setType("image/*");
+            imagenUp.launch(gallery);
+        }
+
+
+
+    }
     /**
      * Eventos click
      * del layout
@@ -64,7 +127,7 @@ public class PersonaFragment extends Fragment {
                 return false;
             }
         });
-        
+        binding.imgPerfil.setOnClickListener(view -> {loaderImg(imagenUp);});
         binding.btnRegistrar.setOnClickListener(view -> {createPerson();});
         binding.imgBorrar.setOnClickListener(view -> {deletePerson();});
         binding.imgEditar.setOnClickListener(view -> {updatePerson();});
@@ -76,7 +139,7 @@ public class PersonaFragment extends Fragment {
         binding.email.setText("");
         binding.phone.setText("");
         binding.identify.setText("");
-
+        binding.imgPerfil.setImageResource(R.drawable.persona);
     }
 
     /**
@@ -171,12 +234,14 @@ public class PersonaFragment extends Fragment {
                 !binding.nameFull.getText().toString().isEmpty();
         if (verified){
 
+            String img = convertorImage(photoBitmap);
+
             ResponsePersona persona = new ResponsePersona(
                     binding.nameFull.getText().toString(),
                     binding.identify.getText().toString(),
                     binding.email.getText().toString(),
                     binding.phone.getText().toString(),
-                    "");
+                    img);
 
             dashboardViewModel.setResultInsert(persona);
 
@@ -187,6 +252,16 @@ public class PersonaFragment extends Fragment {
         }else{
             Snackbar.make(root, R.string.title_complete_input,BaseTransientBottomBar.LENGTH_LONG).show();
         }
+
+    }
+
+    private String convertorImage(Bitmap photoBitmap) {
+
+        ByteArrayOutputStream array = new ByteArrayOutputStream();
+        photoBitmap.compress(Bitmap.CompressFormat.JPEG,100,array);
+        byte[] imagenByte = array.toByteArray();
+        String imagenString = Base64.encodeToString(imagenByte,Base64.DEFAULT);
+        return imagenString;
 
     }
 
@@ -203,7 +278,11 @@ public class PersonaFragment extends Fragment {
                 binding.email.setText(personasPojo.getCorreo());
                 binding.phone.setText(personasPojo.getTelefono());
 
-
+                Picasso.with(getContext())
+                        .load(personasPojo.getImg())
+                        .resize(150,300)
+                        .centerCrop()
+                        .into(binding.imgPerfil);
             }
         });
     }
