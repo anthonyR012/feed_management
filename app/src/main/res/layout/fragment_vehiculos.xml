@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="#EAEAF0"
     android:orientation="vertical"
     tools:context=".ui.vehiculos.VehiculosFragment">
 
@@ -141,8 +141,8 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/border_bottom"
                     android:hint="Categoría"
+                    android:background="@drawable/border"
                     android:id="@+id/categoriaVehi"
                     android:inputType="text" />
             </com.google.android.material.textfield.TextInputLayout>

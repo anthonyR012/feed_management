@@ -52,6 +52,7 @@ public class PersonaFragment extends Fragment {
     View root;
     private Bitmap photoBitmap;
     private ActivityResultLauncher<Intent> imagenUp;
+    private boolean state = true;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -148,6 +149,7 @@ public class PersonaFragment extends Fragment {
         binding.phone.setText("");
         binding.identify.setText("");
         binding.imgPerfil.setImageResource(R.drawable.perfil);
+        state = true;
     }
 
     /**
@@ -242,10 +244,10 @@ public class PersonaFragment extends Fragment {
                 !binding.phone.getText().toString().isEmpty() &&
                 !binding.nameFull.getText().toString().isEmpty();
         if (verified){
-            if (photoBitmap!=null) {
+            if (state) {
 
 
-                String img = convertorImage(photoBitmap);
+                String img = photoBitmap!=null?convertorImage(photoBitmap):"";
 
                 ResponsePersona persona = new ResponsePersona(
                         binding.nameFull.getText().toString(),
@@ -269,6 +271,11 @@ public class PersonaFragment extends Fragment {
 
     }
 
+    /**
+     * Convierte a base 64 img
+     * @param photoBitmap
+     * @return Stringimagen
+     */
     private String convertorImage(Bitmap photoBitmap) {
 
         ByteArrayOutputStream array = new ByteArrayOutputStream();
@@ -283,7 +290,7 @@ public class PersonaFragment extends Fragment {
      * accede a model busca persona
      */
     private void getPerson() {
-        
+        state = false;
         dashboardViewModel.searchPerson(binding.identify.getText().toString());
         dashboardViewModel.getPersonas().observe(getViewLifecycleOwner(), new Observer<PersonasPojo>() {
             @Override

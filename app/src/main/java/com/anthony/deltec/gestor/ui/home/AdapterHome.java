@@ -102,13 +102,19 @@ public class AdapterHome extends RecyclerView.Adapter<AdapterHome.ViewHolderDato
             estado.setText(modelo.getState());
             nombre.setText(modelo.getNamePerson());
 
-
+            if (modelo.getImg()!=null && modelo.getImg().length()>5) {
                 Picasso.with(context)
                         .load(modelo.getImg())
-                        .resize(150,300)
+                        .resize(150, 300)
                         .centerCrop()
                         .into(imagen);
-
+            }else{
+                Picasso.with(context)
+                        .load(R.drawable.perfil)
+                        .resize(110, 200)
+                        .centerCrop()
+                        .into(imagen);
+            }
 
 //
 //            Log.i("entr","");

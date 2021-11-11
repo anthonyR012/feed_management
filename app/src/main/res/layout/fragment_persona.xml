@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.personas.PersonaFragment"
-    android:background="#FFFFFF"
+    android:background="#EAEAF0"
     android:orientation="vertical">
 
     <LinearLayout
