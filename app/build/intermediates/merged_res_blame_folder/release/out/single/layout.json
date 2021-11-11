@@ -1,0 +1,30 @@
+[
+    {
+        "merged": "C:\\Anthony\\Practicas\\GestorMultas\\app\\build\\intermediates\\incremental\\mergeReleaseResources\\stripped.dir\\layout\\fragment_home.xml",
+        "source": "C:\\Anthony\\Practicas\\GestorMultas\\app\\src\\main\\res\\layout\\fragment_home.xml"
+    },
+    {
+        "merged": "C:\\Anthony\\Practicas\\GestorMultas\\app\\build\\intermediates\\incremental\\mergeReleaseResources\\stripped.dir\\layout\\fragment_persona.xml",
+        "source": "C:\\Anthony\\Practicas\\GestorMultas\\app\\src\\main\\res\\layout\\fragment_persona.xml"
+    },
+    {
+        "merged": "C:\\Anthony\\Practicas\\GestorMultas\\app\\build\\intermediates\\incremental\\mergeReleaseResources\\stripped.dir\\layout\\item_multas_personas.xml",
+        "source": "C:\\Anthony\\Practicas\\GestorMultas\\app\\src\\main\\res\\layout\\item_multas_personas.xml"
+    },
+    {
+        "merged": "C:\\Anthony\\Practicas\\GestorMultas\\app\\build\\intermediates\\incremental\\mergeReleaseResources\\stripped.dir\\layout\\fragment_vehiculos.xml",
+        "source": "C:\\Anthony\\Practicas\\GestorMultas\\app\\src\\main\\res\\layout\\fragment_vehiculos.xml"
+    },
+    {
+        "merged": "C:\\Anthony\\Practicas\\GestorMultas\\app\\build\\intermediates\\incremental\\mergeReleaseResources\\stripped.dir\\layout\\activity_main.xml",
+        "source": "C:\\Anthony\\Practicas\\GestorMultas\\app\\src\\main\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Anthony\\Practicas\\GestorMultas\\app\\build\\intermediates\\incremental\\mergeReleaseResources\\stripped.dir\\layout\\activity_splash_init.xml",
+        "source": "C:\\Anthony\\Practicas\\GestorMultas\\app\\src\\main\\res\\layout\\activity_splash_init.xml"
+    },
+    {
+        "merged": "C:\\Anthony\\Practicas\\GestorMultas\\app\\build\\intermediates\\incremental\\mergeReleaseResources\\stripped.dir\\layout\\fragment_multas.xml",
+        "source": "C:\\Anthony\\Practicas\\GestorMultas\\app\\src\\main\\res\\layout\\fragment_multas.xml"
+    }
+]
